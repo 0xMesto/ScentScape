@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScentScape - AI-Crafted Perfumes</title>
+    <title>ScentScape - AI-Crafted Bespoke Perfumes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #8A2BE2;
+            --primary-color: #3C1874;
             --secondary-color: #FFD700;
+            --accent-color: #E6007E;
             --text-color: #333;
-            --bg-color: #F8F9FA;
-            --accent-color: #FF69B4;
+            --bg-color: #F9F7FE;
+            --light-purple: #E0D8F0;
         }
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             background-color: var(--bg-color);
         }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', serif;
         }
         .navbar {
-            background-color: rgba(138, 43, 226, 0.9);
+            background-color: rgba(60, 24, 116, 0.95);
             backdrop-filter: blur(10px);
         }
         .navbar-brand, .nav-link {
@@ -157,6 +158,123 @@
             align-items: center;
             justify-content: center;
         }
+        .ingredient-showcase {
+            background-color: var(--light-purple);
+            padding: 80px 0;
+        }
+        .ingredient-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .ingredient-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .ingredient-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .ingredient-card-body {
+            padding: 20px;
+        }
+        .ai-explanation {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            padding: 80px 0;
+            color: var(--primary-color);
+        }
+        .number-stat {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--bg-color);
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--primary-color);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--primary-color);
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--primary-color);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--primary-color) transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -173,6 +291,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#benefits">Benefits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ingredients">Ingredients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#testimonials">Testimonials</a>
@@ -253,6 +374,57 @@
         </div>
     </section>
 
+    <section id="ingredients" class="ingredient-showcase">
+        <div class="container">
+            <h2 class="text-center mb-5">Premium Ingredients</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="ingredient-card">
+                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lavender">
+                        <div class="ingredient-card-body">
+                            <h5>Lavender</h5>
+                            <p>Soothing and calming, our ethically sourced lavender adds a touch of serenity to your custom blend.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="ingredient-card">
+                        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sandalwood">
+                        <div class="ingredient-card-body">
+                            <h5>Sandalwood</h5>
+                            <p>Rich and woody, our sustainable sandalwood brings depth and warmth to your unique fragrance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="ingredient-card">
+                        <img src="https://images.unsplash.com/photo-1591438252948-fa5dd3701c2a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bergamot">
+                        <div class="ingredient-card-body">
+                            <h5>Bergamot</h5>
+                            <p>Fresh and citrusy, our carefully selected bergamot adds a bright, uplifting note to your personal scent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ai-explanation py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">The Science Behind Your Scent</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="AI Technology" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h3>AI-Powered Perfume Creation</h3>
+                    <p>Our advanced AI algorithm analyzes thousands of data points, including your personal preferences, body chemistry, and lifestyle factors. It then creates a unique scent profile that's perfectly tailored to you.</p>
+                    <p>By combining machine learning with the expertise of master perfumers, we create a fragrance that's not just personalized, but truly one-of-a-kind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="testimonials" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Rave Reviews</h2>
@@ -273,6 +445,82 @@
                     <div class="testimonial">
                         <p>"I love how my ScentScape perfume evolves throughout the day. It's like having multiple scents in one bottle!"</p>
                         <p class="fw-bold">- Emma L.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">ScentScape by the Numbers</h2>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card text-center">
+                        <div class="number-stat">10,000+</div>
+                        <p>Unique Scents Created</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card text-center">
+                        <div class="number-stat">99%</div>
+                        <p>Customer Satisfaction</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card text-center">
+                        <div class="number-stat">50+</div>
+                        <p>Premium Ingredients</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card text-center">
+                        <div class="number-stat">24/7</div>
+                        <p>AI-Powered Analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">The Journey of Your Scent</h2>
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>Take the Quiz</h3>
+                        <p>Answer our detailed questionnaire about your preferences, lifestyle, and scent memories.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3>AI Analysis</h3>
+                        <p>Our advanced AI processes your responses and creates your unique scent profile.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>Perfumer's Touch</h3>
+                        <p>Master perfumers interpret the AI's recommendations and craft your bespoke fragrance.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3>Quality Control</h3>
+                        <p>Rigorous testing ensures your perfume meets our high standards of excellence.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>Elegant Packaging</h3>
+                        <p>Your custom scent is bottled and packaged in our signature, eco-friendly design.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3>Delivery</h3>
+                        <p>Your one-of-a-kind fragrance arrives at your doorstep, ready to elevate your essence.</p>
                     </div>
                 </div>
             </div>
@@ -407,6 +655,19 @@
             ease: 'power3.out'
         });
 
+        // Ingredient cards animation
+        gsap.from('.ingredient-card', {
+            scrollTrigger: {
+                trigger: '#ingredients',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+
         // Testimonials animation
         gsap.from('.testimonial', {
             scrollTrigger: {
@@ -420,8 +681,34 @@
             ease: 'power3.out'
         });
 
-        // Parallax effect
-        gsap.to('.parallax', {
+        // Stats animation
+        gsap.from('.stat-card', {
+            scrollTrigger: {
+                trigger: '.stat-card',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+
+        // Timeline animation
+        gsap.from('.timeline-container', {
+            scrollTrigger: {
+                trigger: '.timeline',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            x: (i) => i % 2 === 0 ? -50 : 50,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+
+// Parallax effect
+gsap.to('.parallax', {
             scrollTrigger: {
                 trigger: '.parallax',
                 start: 'top bottom',
@@ -430,6 +717,40 @@
             },
             backgroundPosition: '50% 100%',
             ease: 'none'
+        });
+
+        // Number counter animation
+        const numberStats = document.querySelectorAll('.number-stat');
+        numberStats.forEach(stat => {
+            const targetNumber = parseInt(stat.textContent);
+            gsap.to(stat, {
+                scrollTrigger: {
+                    trigger: stat,
+                    start: 'top 80%'
+                },
+                innerHTML: targetNumber,
+                duration: 2,
+                ease: 'power2.out',
+                snap: { innerHTML: 1 }
+            });
+        });
+
+        // Ingredient card hover effect
+        document.querySelectorAll('.ingredient-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
         });
     </script>
 </body>
